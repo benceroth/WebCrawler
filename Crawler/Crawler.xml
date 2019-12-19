@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Crawler</name>
+    </assembly>
+    <members>
+        <member name="T:Crawler.Crawler">
+            <summary>
+            Defines crawler as a facade.
+            </summary>
+        </member>
+        <member name="M:Crawler.Crawler.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.Crawler"/> class.
+            </summary>
+        </member>
+        <member name="E:Crawler.Crawler.OnProcessCompleted">
+            <summary>
+            Event that fires on request processing completion.
+            </summary>
+        </member>
+        <member name="E:Crawler.Crawler.OnDownloadCompleted">
+            <summary>
+            Event that fires on request download completion.
+            </summary>
+        </member>
+        <member name="P:Crawler.Crawler.RunFlags">
+            <summary>
+            Gets or sets crawler run flags.
+            </summary>
+        </member>
+        <member name="P:Crawler.Crawler.MaxParallelDownload">
+            <summary>
+            Gets or sets maximum amount of parallel downloads.
+            </summary>
+        </member>
+        <member name="P:Crawler.Crawler.MaxParallelProcess">
+            <summary>
+            Gets or sets maximum amount of parallel processes.
+            </summary>
+        </member>
+        <member name="P:Crawler.Crawler.Agent">
+            <summary>
+            Gets or sets browser agent for downloading.
+            </summary>
+        </member>
+        <member name="P:Crawler.Crawler.FileProcessor">
+            <summary>
+            Gets or sets file processor.
+            </summary>
+        </member>
+        <member name="M:Crawler.Crawler.EnqueueDownloadRequest(Crawler.Request)">
+            <summary>
+            Enqueues a request to download.
+            </summary>
+            <param name="request">Request to be downloaded.</param>
+            <returns>Self.</returns>
+        </member>
+        <member name="M:Crawler.Crawler.EnqueueProcessRequest(Crawler.Request)">
+            <summary>
+            Enqueues a request to process.
+            </summary>
+            <param name="request">Request to be processed.</param>
+            <returns>Self.</returns>
+        </member>
+        <member name="M:Crawler.Crawler.LinkDownloadWithProcess">
+            <summary>
+            Links download with processing, so it will automatically trigger processing after OnDownloadCompleted event.
+            </summary>
+            <returns>Self.</returns>
+        </member>
+        <member name="M:Crawler.Crawler.Start(System.Threading.CancellationToken)">
+            <summary>
+            Starts crawler that can be cancelled.
+            </summary>
+            <param name="token">CancellationToken.</param>
+            <returns>Self.</returns>
+        </member>
+        <member name="T:Crawler.DownloadCompletedEventArgs">
+            <summary>
+            Defines EventArgs for OnCompleted downloader event.
+            </summary>
+        </member>
+        <member name="M:Crawler.DownloadCompletedEventArgs.#ctor(Crawler.Request)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.DownloadCompletedEventArgs"/> class.
+            </summary>
+            <param name="request">Request associated with the event.</param>
+        </member>
+        <member name="P:Crawler.DownloadCompletedEventArgs.Request">
+            <summary>
+            Gets request associated with the event.
+            </summary>
+        </member>
+        <member name="T:Crawler.Downloader">
+            <summary>
+            Defines a queue based file downloader abstraction.
+            </summary>
+        </member>
+        <member name="E:Crawler.Downloader.OnCompleted">
+            <summary>
+            Event that fires on download completion.
+            </summary>
+        </member>
+        <member name="P:Crawler.Downloader.MaxParallelDownload">
+            <summary>
+            Gets or sets maximum amount of parallel downloads.
+            </summary>
+        </member>
+        <member name="P:Crawler.Downloader.Agent">
+            <summary>
+            Gets or sets browser agent for downloading.
+            </summary>
+        </member>
+        <member name="M:Crawler.Downloader.Start(System.Threading.CancellationToken)">
+            <summary>
+            Starts queue based process until cancellation.
+            </summary>
+            <param name="token">CancellationToken.</param>
+        </member>
+        <member name="M:Crawler.Downloader.Enqueue(Crawler.Request)">
+            <summary>
+            Enqueues a request.
+            </summary>
+            <param name="request">Request.</param>
+        </member>
+        <member name="T:Crawler.DownloadState">
+            <summary>
+            Defines download state of a request.
+            </summary>
+        </member>
+        <member name="F:Crawler.DownloadState.None">
+            <summary>
+            Not associated with the crawler.
+            </summary>
+        </member>
+        <member name="F:Crawler.DownloadState.Queued">
+            <summary>
+            Queued to be downloaded.
+            </summary>
+        </member>
+        <member name="F:Crawler.DownloadState.Downloading">
+            <summary>
+            Under downloading.
+            </summary>
+        </member>
+        <member name="F:Crawler.DownloadState.Completed">
+            <summary>
+            Processing completed.
+            </summary>
+        </member>
+        <member name="F:Crawler.DownloadState.Error">
+            <summary>
+            Error thrown during processing.
+            </summary>
+        </member>
+        <member name="T:Crawler.IFileProcessor">
+            <summary>
+            Defines interface for file processor.
+            </summary>
+        </member>
+        <member name="M:Crawler.IFileProcessor.Process(Crawler.Request)">
+            <summary>
+            Processes a request.
+            </summary>
+            <param name="request">Request.</param>
+            <returns>Completed task.</returns>
+        </member>
+        <member name="T:Crawler.ProcessCompletedEventArgs">
+            <summary>
+            Defines EventArgs for OnCompleted processor event.
+            </summary>
+        </member>
+        <member name="M:Crawler.ProcessCompletedEventArgs.#ctor(Crawler.Request)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.ProcessCompletedEventArgs"/> class.
+            </summary>
+            <param name="request">Request associated with the event.</param>
+        </member>
+        <member name="P:Crawler.ProcessCompletedEventArgs.Request">
+            <summary>
+            Gets request associated with the event.
+            </summary>
+        </member>
+        <member name="T:Crawler.Processor">
+            <summary>
+            Defines a queue based file processor abstraction.
+            </summary>
+        </member>
+        <member name="E:Crawler.Processor.OnCompleted">
+            <summary>
+            Event that fires on process completion.
+            </summary>
+        </member>
+        <member name="P:Crawler.Processor.MaxParallelProcess">
+            <summary>
+            Gets or sets maximum amount of parallel processes.
+            </summary>
+        </member>
+        <member name="P:Crawler.Processor.FileProcessor">
+            <summary>
+            Gets or sets file processor.
+            </summary>
+        </member>
+        <member name="M:Crawler.Processor.Start(System.Threading.CancellationToken)">
+            <summary>
+            Starts queue based process until cancellation.
+            </summary>
+            <param name="token">CancellationToken.</param>
+        </member>
+        <member name="M:Crawler.Processor.Enqueue(Crawler.Request)">
+            <summary>
+            Enqueues a request.
+            </summary>
+            <param name="request">Request.</param>
+        </member>
+        <member name="T:Crawler.ProcessState">
+            <summary>
+            Defines processing state of a request.
+            </summary>
+        </member>
+        <member name="F:Crawler.ProcessState.None">
+            <summary>
+            Not associated with the crawler.
+            </summary>
+        </member>
+        <member name="F:Crawler.ProcessState.Queued">
+            <summary>
+            Queued to be processed.
+            </summary>
+        </member>
+        <member name="F:Crawler.ProcessState.Processing">
+            <summary>
+            Under processing.
+            </summary>
+        </member>
+        <member name="F:Crawler.ProcessState.Completed">
+            <summary>
+            Processing completed.
+            </summary>
+        </member>
+        <member name="F:Crawler.ProcessState.Error">
+            <summary>
+            Error thrown during processing.
+            </summary>
+        </member>
+        <member name="T:Crawler.Request">
+            <summary>
+            Request that can be downloaded and processed.
+            </summary>
+        </member>
+        <member name="P:Crawler.Request.Name">
+            <summary>
+            Gets or sets request name. Used for file name.
+            </summary>
+        </member>
+        <member name="P:Crawler.Request.Path">
+            <summary>
+            Gets or sets absolute file path.
+            </summary>
+        </member>
+        <member name="P:Crawler.Request.Url">
+            <summary>
+            Gets or sets url associated with the request.
+            </summary>
+        </member>
+        <member name="P:Crawler.Request.ProcessState">
+            <summary>
+            Gets or sets process state.
+            </summary>
+        </member>
+        <member name="P:Crawler.Request.DownloadState">
+            <summary>
+            Gets or sets download state.
+            </summary>
+        </member>
+        <member name="T:Crawler.RunFlags">
+            <summary>
+            Flags that define crawler running features.
+            </summary>
+        </member>
+        <member name="F:Crawler.RunFlags.None">
+            <summary>
+            Does nothing,
+            </summary>
+        </member>
+        <member name="F:Crawler.RunFlags.Process">
+            <summary>
+            Processes requests.
+            </summary>
+        </member>
+        <member name="F:Crawler.RunFlags.Download">
+            <summary>
+            Downloads requests.
+            </summary>
+        </member>
+    </members>
+</doc>

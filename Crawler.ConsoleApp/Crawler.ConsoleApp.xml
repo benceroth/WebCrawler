@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Crawler.ConsoleApp</name>
+    </assembly>
+    <members>
+        <member name="T:Crawler.ConsoleApp.FakeProcessor">
+            <summary>
+            Fake file processor.
+            </summary>
+        </member>
+        <member name="M:Crawler.ConsoleApp.FakeProcessor.Process(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.ConsoleApp.DownloaderPrinter">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.ConsoleApp.DownloaderPrinter.#ctor(System.Collections.Generic.IEnumerable{Crawler.Request})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.ConsoleApp.DownloaderPrinter"/> class.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+        </member>
+        <member name="M:Crawler.ConsoleApp.DownloaderPrinter.WriteHeader">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.ConsoleApp.DownloaderPrinter.WriteRequest(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.ConsoleApp.DownloaderPrinter.SelectColor(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.ConsoleApp.Printer">
+            <summary>
+            Defines printer logic.
+            </summary>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Printer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.ConsoleApp.Printer"/> class.
+            </summary>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Printer.Start(System.Threading.CancellationToken)">
+            <summary>
+            Starts printing logic that can be cancelled.
+            </summary>
+            <param name="token">CancellationToken.</param>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Printer.Write">
+            <summary>
+            Writes a "frame".
+            </summary>
+        </member>
+        <member name="T:Crawler.ConsoleApp.ProcessorPrinter">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.ConsoleApp.ProcessorPrinter.#ctor(System.Collections.Generic.IEnumerable{Crawler.Request})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.ConsoleApp.ProcessorPrinter"/> class.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+        </member>
+        <member name="M:Crawler.ConsoleApp.ProcessorPrinter.WriteHeader">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.ConsoleApp.ProcessorPrinter.WriteRequest(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.ConsoleApp.ProcessorPrinter.SelectColor(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.ConsoleApp.SectionPrinter">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.ConsoleApp.SectionPrinter.#ctor(System.Collections.Generic.IEnumerable{Crawler.Request})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.ConsoleApp.SectionPrinter"/> class.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+        </member>
+        <member name="M:Crawler.ConsoleApp.SectionPrinter.WriteHeader">
+            <summary>
+            Write printer header.
+            </summary>
+        </member>
+        <member name="M:Crawler.ConsoleApp.SectionPrinter.WriteRequest(Crawler.Request)">
+            <summary>
+            Writes a request.
+            </summary>
+            <param name="request">Request.</param>
+        </member>
+        <member name="M:Crawler.ConsoleApp.SectionPrinter.SelectColor(Crawler.Request)">
+            <summary>
+            Sets color for corresponding request.
+            </summary>
+            <param name="request">Request.</param>
+        </member>
+        <member name="M:Crawler.ConsoleApp.SectionPrinter.Write">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.ConsoleApp.Program">
+            <summary>
+            Defines program.
+            </summary>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Program.Main">
+            <summary>
+            Main entry point of program.
+            </summary>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Program.Start">
+            <summary>
+            Starts a test crawler.
+            </summary>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Program.CreateCrawler">
+            <summary>
+            Creates a new crawler with linking.
+            </summary>
+            <returns>Crawler.</returns>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Program.CreatePrinters(System.Collections.Generic.IEnumerable{Crawler.Request},System.Threading.CancellationToken)">
+            <summary>
+            Create printers and starts printing process that can be cancelled.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+            <param name="token">CancellationToken.</param>
+        </member>
+        <member name="M:Crawler.ConsoleApp.Program.CreateRequests(Crawler.Crawler,System.Collections.Concurrent.ConcurrentBag{Crawler.Request})">
+            <summary>
+            Create enqueued requests on crawler and printers.
+            </summary>
+            <param name="crawler">Crawler.</param>
+            <param name="requests">ConcurrentBag storing requests for printers.</param>
+        </member>
+    </members>
+</doc>
