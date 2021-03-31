@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Crawler.Sitemap</name>
+    </assembly>
+    <members>
+        <member name="T:Crawler.Sitemap.FileProcessor">
+            <summary>
+            Fake file processor.
+            </summary>
+        </member>
+        <member name="M:Crawler.Sitemap.FileProcessor.#ctor(Crawler.Crawler,System.Collections.Concurrent.IProducerConsumerCollection{Crawler.Request{Crawler.Sitemap.SitemapItem}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.Sitemap.FileProcessor"/> class.
+            </summary>
+            <param name="requests">Requests.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.FileProcessor.Process(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.Sitemap.DownloaderPrinter">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.DownloaderPrinter.#ctor(System.Collections.Generic.IEnumerable{Crawler.Request})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.Sitemap.DownloaderPrinter"/> class.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.DownloaderPrinter.WriteHeader">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.DownloaderPrinter.WriteRequest(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.DownloaderPrinter.SelectColor(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.Sitemap.Printer">
+            <summary>
+            Defines printer logic.
+            </summary>
+        </member>
+        <member name="M:Crawler.Sitemap.Printer.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.Sitemap.Printer"/> class.
+            </summary>
+        </member>
+        <member name="M:Crawler.Sitemap.Printer.Start(System.Threading.CancellationToken)">
+            <summary>
+            Starts printing logic that can be cancelled.
+            </summary>
+            <param name="token">CancellationToken.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.Printer.Write">
+            <summary>
+            Writes a "frame".
+            </summary>
+        </member>
+        <member name="T:Crawler.Sitemap.ProcessorPrinter">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.ProcessorPrinter.#ctor(System.Collections.Generic.IEnumerable{Crawler.Request})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.Sitemap.ProcessorPrinter"/> class.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.ProcessorPrinter.WriteHeader">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.ProcessorPrinter.WriteRequest(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.ProcessorPrinter.SelectColor(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.Sitemap.SectionPrinter">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.SectionPrinter.#ctor(System.Collections.Generic.IEnumerable{Crawler.Request})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.Sitemap.SectionPrinter"/> class.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.SectionPrinter.WriteHeader">
+            <summary>
+            Write printer header.
+            </summary>
+        </member>
+        <member name="M:Crawler.Sitemap.SectionPrinter.WriteRequest(Crawler.Request)">
+            <summary>
+            Writes a request.
+            </summary>
+            <param name="request">Request.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.SectionPrinter.SelectColor(Crawler.Request)">
+            <summary>
+            Sets color for corresponding request.
+            </summary>
+            <param name="request">Request.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.SectionPrinter.Write">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.Sitemap.SumPrinter">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.SumPrinter.#ctor(System.Collections.Generic.IEnumerable{Crawler.Request})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Crawler.Sitemap.SumPrinter"/> class.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.SumPrinter.WriteHeader">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.SumPrinter.Write">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.SumPrinter.WriteRequest(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="M:Crawler.Sitemap.SumPrinter.SelectColor(Crawler.Request)">
+            <inheritdoc />
+        </member>
+        <member name="T:Crawler.Sitemap.Program">
+            <summary>
+            Defines program.
+            </summary>
+        </member>
+        <member name="M:Crawler.Sitemap.Program.Main">
+            <summary>
+            Main entry point of program.
+            </summary>
+        </member>
+        <member name="M:Crawler.Sitemap.Program.Start">
+            <summary>
+            Starts a test crawler.
+            </summary>
+        </member>
+        <member name="M:Crawler.Sitemap.Program.CreateCrawler(System.Collections.Concurrent.IProducerConsumerCollection{Crawler.Request{Crawler.Sitemap.SitemapItem}})">
+            <summary>
+            Creates a new crawler with linking.
+            </summary>
+            <returns>Crawler.</returns>
+        </member>
+        <member name="M:Crawler.Sitemap.Program.CreatePrinters(System.Collections.Generic.IEnumerable{Crawler.Request},System.Threading.CancellationToken)">
+            <summary>
+            Create printers and starts printing process that can be cancelled.
+            </summary>
+            <param name="requests">Requests to be printed.</param>
+            <param name="token">CancellationToken.</param>
+        </member>
+        <member name="M:Crawler.Sitemap.Program.CreateRequests(Crawler.Crawler,System.Collections.Concurrent.ConcurrentBag{Crawler.Request{Crawler.Sitemap.SitemapItem}})">
+            <summary>
+            Create enqueued requests on crawler and printers.
+            </summary>
+            <param name="crawler">Crawler.</param>
+            <param name="requests">ConcurrentBag storing requests for printers.</param>
+        </member>
+        <member name="P:Crawler.Sitemap.SitemapItem.Priority">
+            <summary>
+            Gets or sets priority.
+            </summary>
+        </member>
+    </members>
+</doc>

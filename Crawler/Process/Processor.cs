@@ -72,10 +72,10 @@ namespace Crawler
 
             try
             {
-                this.Move(request, "./Processing/" + request.Name);
+                this.Move(request, "./Processing/" + request.FileName);
                 await this.FileProcessor.Process(request);
                 request.ProcessState = ProcessState.Completed;
-                this.Move(request, "./Processed/" + request.Name);
+                this.Move(request, "./Processed/" + request.FileName);
 
                 this.OnCompleted?.Invoke(this, new ProcessCompletedEventArgs(request));
                 this.semaphore.Release();

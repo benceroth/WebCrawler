@@ -69,13 +69,13 @@ namespace Crawler
         private async Task Download(Request request)
         {
             var task = this.semaphore.WaitAsync();
-
+            await Task.Delay(750);
             var client = new WebClient();
             client.Headers.Add(HttpRequestHeader.UserAgent, this.Agent);
             client.DownloadFileCompleted += (sender, e) => this.Client_DownloadFileCompleted(request, e);
 
             await task;
-            request.Path = "./Downloaded/" + request.Name;
+            request.Path = "./Downloaded/" + request.FileName;
             request.DownloadState = DownloadState.Downloading;
 
             try
@@ -84,7 +84,6 @@ namespace Crawler
             }
             catch (Exception exception)
             {
-                this.semaphore.Release();
                 request.DownloadState = DownloadState.Error;
                 throw exception;
             }

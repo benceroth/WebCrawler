@@ -14,10 +14,18 @@ namespace Crawler
     /// </summary>
     public class Request
     {
+        private ProcessState processState;
+        private DownloadState downloadState;
+
         /// <summary>
-        /// Gets or sets request name. Used for file name.
+        /// Gets or sets request name.
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets request file name. Used for file name.
+        /// </summary>
+        public string FileName { get; set; }
 
         /// <summary>
         /// Gets or sets absolute file path.
@@ -30,13 +38,39 @@ namespace Crawler
         public string Url { get; set; }
 
         /// <summary>
+        /// Gets or sets datetime.
+        /// </summary>
+        public DateTime DownloadStateChanged { get; set; }
+
+        /// <summary>
+        /// Gets or sets datetime.
+        /// </summary>
+        public DateTime ProcessStateChanged { get; set; }
+
+        /// <summary>
         /// Gets or sets process state.
         /// </summary>
-        public ProcessState ProcessState { get; set; }
+        public ProcessState ProcessState
+        {
+            get => this.processState;
+            set
+            {
+                this.processState = value;
+                this.ProcessStateChanged = DateTime.Now;
+            }
+        }
 
         /// <summary>
         /// Gets or sets download state.
         /// </summary>
-        public DownloadState DownloadState { get; set; }
+        public DownloadState DownloadState
+        {
+            get => this.downloadState;
+            set
+            {
+                this.downloadState = value;
+                this.DownloadStateChanged = DateTime.Now;
+            }
+        }
     }
 }
