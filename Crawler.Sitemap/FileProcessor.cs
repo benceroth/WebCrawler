@@ -66,7 +66,7 @@ namespace Crawler.Sitemap
                     sb.AppendLine();
                     sb.Append($"\t<changefreq>weekly</changefreq>");
                     sb.AppendLine();
-                    sb.Append($"\t<lastmod>" + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss") + "</lastmod>");
+                    sb.Append($"\t<lastmod>" + DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss") + "+00:00</lastmod>");
                     sb.AppendLine();
                     sb.Append($"</url>");
                     items.Add(sb);
