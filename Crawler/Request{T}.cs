@@ -1,14 +1,9 @@
-﻿// <copyright file="Request.cs" company="PlaceholderCompany">
+﻿// <copyright file="Request{T}.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
 namespace Crawler
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading;
-
     /// <summary>
     /// Request that can be downloaded and processed.
     /// </summary>

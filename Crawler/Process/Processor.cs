@@ -6,9 +6,7 @@ namespace Crawler
 {
     using System;
     using System.Collections.Concurrent;
-    using System.Collections.Generic;
     using System.IO;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -84,7 +82,7 @@ namespace Crawler
             {
                 this.semaphore.Release();
                 request.ProcessState = ProcessState.Error;
-                throw exception;
+                throw;
             }
         }
 

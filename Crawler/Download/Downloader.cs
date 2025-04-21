@@ -6,10 +6,8 @@ namespace Crawler
 {
     using System;
     using System.Collections.Concurrent;
-    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Net;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -68,13 +66,11 @@ namespace Crawler
 
         private async Task Download(Request request)
         {
-            var task = this.semaphore.WaitAsync();
-            await Task.Delay(750);
+            await this.semaphore.WaitAsync();
             var client = new WebClient();
             client.Headers.Add(HttpRequestHeader.UserAgent, this.Agent);
             client.DownloadFileCompleted += (sender, e) => this.Client_DownloadFileCompleted(request, e);
 
-            await task;
             request.Path = "./Downloaded/" + request.FileName;
             request.DownloadState = DownloadState.Downloading;
 
@@ -82,10 +78,10 @@ namespace Crawler
             {
                 await client.DownloadFileTaskAsync(request.Url, request.Path);
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 request.DownloadState = DownloadState.Error;
-                throw exception;
+                throw;
             }
         }
 

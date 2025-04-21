@@ -132,7 +132,7 @@ namespace Crawler.Sitemap
 
         private bool AllowedUrl(string url)
         {
-            return !url.Contains('?') && !url.Contains("/cdn-cgi/l/email-protection") && !ImageRegex.IsMatch(url) && this.requests.FirstOrDefault(x => this.UrlsEqual(x.Url, url)) == null;
+            return !url.Contains('?') && !url.Contains("/cdn-cgi/l/email-protection") && !ImageRegex.IsMatch(url) && this.requests.FirstOrDefault(x => this.UrlsEqual(x.Url, url)) == null && Uri.TryCreate(url, UriKind.Absolute, out Uri uri) && uri.Scheme == Uri.UriSchemeHttps;
         }
 
         private string RelativeToAbsoluteConversion(string absUrl, string relUrl)
@@ -170,8 +170,10 @@ namespace Crawler.Sitemap
 
         private bool SameDomainButNotEqualUrls(string url1, string url2)
         {
-            return !this.UrlsEqual(url1, url2) && Uri.TryCreate(url1, UriKind.Absolute, out Uri uri1) &&
-                Uri.TryCreate(url2, UriKind.Absolute, out Uri uri2) && uri1.Host == uri2.Host;
+            return !this.UrlsEqual(url1, url2) &&
+                Uri.TryCreate(url1, UriKind.Absolute, out Uri uri1) &&
+                Uri.TryCreate(url2, UriKind.Absolute, out Uri uri2) &&
+                uri1?.Host?.Replace("www.", string.Empty) == uri2?.Host?.Replace("www.", string.Empty);
         }
 
         private bool UrlsEqual(string url1, string url2)

@@ -5,9 +5,6 @@
 namespace Crawler
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading;
 
     /// <summary>
     /// Request that can be downloaded and processed.

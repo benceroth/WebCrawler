@@ -5,8 +5,6 @@
 namespace Crawler
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     /// <summary>
     /// Defines EventArgs for OnCompleted downloader event.

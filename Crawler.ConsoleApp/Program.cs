@@ -90,7 +90,8 @@ namespace Crawler.ConsoleApp
                 Request request = new Request()
                 {
                     Name = "Google_" + i,
-                    Url = "http://google.com",
+                    FileName = "Google_" + i,
+                    Url = "https://bing.com",
                 };
 
                 requests.Add(request);

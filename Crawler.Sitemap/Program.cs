@@ -93,6 +93,7 @@ namespace Crawler.Sitemap
         private static void CreateRequests(Crawler crawler, ConcurrentBag<Request<SitemapItem>> requests)
         {
             Uri uri = null;
+            Console.WriteLine("Enter the site address:");
             while (!Uri.TryCreate(Console.ReadLine(), UriKind.Absolute, out uri));
 
             var url = uri.ToString();

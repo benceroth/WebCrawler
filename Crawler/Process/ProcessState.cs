@@ -4,10 +4,6 @@
 
 namespace Crawler
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-
     /// <summary>
     /// Defines processing state of a request.
     /// </summary>
